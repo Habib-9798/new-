@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WorkBridge – Canada Jobs for Pakistanis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; font-family: 'Montserrat', Arial, sans-serif; background: #fafbfc; color: #1a1a1a;
+    }
+    header {
+      background: #fff; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 6px #0001; position: sticky; top: 0; z-index: 1000;
+    }
+    .logo { color: #e53935; font-weight: bold; font-size: 2rem; text-decoration: none; letter-spacing: 1px; }
+    nav a { margin: 0 20px; color: #222; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #e53935; }
+    .phone { color: #222; font-size: 1rem; }
+    .phone i { margin-right: 6px; color: #27ae60; }
+    /* Hero Section */
+    .hero {
+      position: relative; background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; color: #fff; 
+    }
+    .hero:before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(26,30,32,0.65);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative; z-index: 1; max-width: 800px; margin-top: 40px;
+    }
+    .hero h1 {
+      font-size: 3rem; font-weight: 700; margin: 0 0 10px 0;
+    }
+    .hero h1 .red { color: #e53935; }
+    .hero p { font-size: 1.25rem; margin: 10px 0 36px 0; }
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-btns a {
+      display: flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 7px; font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: none; transition: box-shadow 0.2s; box-shadow: 0 2px 10px #0001;
+    }
+    .btn-red { background: #e53935; color: #fff; }
+    .btn-green { background: #27ae60; color: #fff; }
+    .btn-red:hover { background: #bf2222; }
+    .btn-green:hover { background: #178d46; }
+    .badges {
+      display: flex; gap: 18px; justify-content: center; margin: 36px 0 0 0; flex-wrap: wrap;
+    }
+    .badge {
+      background: #fff; color: #27ae60; padding: 7px 20px; border-radius: 19px; font-size: 1rem; display: flex; align-items: center; gap: 7px; box-shadow: 0 2px 6px #0002;
+      margin-bottom: 8px;
+    }
+    .badge i { font-size: 1.1em;}
+    /* Section */
+    section { padding: 72px 0 36px 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+    .section-title {
+      font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .section-title .icon { font-size: 1.6rem; color: #e53935;}
+    .section-subtitle {
+      text-align: center; color: #555; font-size: 1.1rem; margin-bottom: 32px;
+    }
+    /* Jobs grid */
+    .jobs-grid {
+      display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+    }
+    .job-card {
+      background: #fff; border-radius: 13px; box-shadow: 0 2px 8px #0002; width: 320px; min-height: 230px; display: flex; flex-direction: column;
+    }
+    .job-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 13px 13px 0 0; }
+    .job-card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .job-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 7px; display: flex; align-items: center; gap: 8px;}
+    .job-salary { color: #27ae60; font-size: 1.2rem; font-weight: 700; margin-bottom: 5px;}
+    .job-desc { color: #444; font-size: 0.97rem; flex: 1; margin-bottom: 14px; }
+    .apply-btn { background: #e53935; color: #fff; padding: 9px 0; border: none; border-radius: 5px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; margin-top: auto;}
+    .apply-btn:hover { background: #bf2222;}
+    /* About */
+    .about-row { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
+    .about-img { flex: 1 1 350px; min-width: 320px;}
+    .about-img img { width: 100%; border-radius: 12px;}
+    .about-content { flex: 1 1 340px; min-width: 320px;}
+    .about-content ul { list-style: none; padding: 0; margin: 18px 0;}
+    .about-content li { margin-bottom: 13px; display: flex; align-items: center; gap: 10px; color: #27ae60; font-size: 1.03rem;}
+    .about-content .btn-green { margin-top: 14px;}
+    /* Why Choose Us */
+    .features-row { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;}
+    .feature-card {
+      background: #fff; border-radius: 13px; box-shadow: 0 2px 7px #0002; width: 250px; padding: 36px 20px 30px 20px; text-align: center; min-height: 170px;
+    }
+    .feature-icon {
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.6rem;
+    }
+    .feature-icon.red { background: #e53935; color: #fff;}
+    .feature-icon.green { background: #27ae60; color: #fff;}
+    .feature-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 6px;}
+    .feature-desc { font-size: 0.99rem; color: #666;}
+    /* Timeline */
+    .timeline-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 42px 0 10px 0;}
+    .timeline-step {
+      background: #fff; border-radius: 11px; box-shadow: 0 2px 7px #0002; padding: 20px 18px 15px 18px; text-align: center; width: 180px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .timeline-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;}
+    .timeline-num.red { background: #e53935; color: #fff;}
+    .timeline-num.green { background: #27ae60; color: #fff;}
+    .timeline-title { font-weight: 600; margin-bottom: 4px; }
+    .timeline-desc { color: #555; font-size: 0.98rem;}
+    .timeline-btn { margin: 32px auto 0 auto; display: block;}
+    /* Testimonials */
+    .testimonials-row { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;}
+    .testimonial-card {
+      background: #fff; border-radius: 13px; box-shadow: 0 2px 8px #0002; width: 340px; padding: 28px 22px 18px 22px; display: flex; flex-direction: column; align-items: flex-start; min-height: 220px;
+    }
+    .testimonial-user { display: flex; align-items: center; gap: 10px; margin-bottom: 5px;}
+    .testimonial-user img { width: 46px; height: 46px; border-radius: 50%; }
+    .testimonial-name { font-weight: 600;}
+    .testimonial-job { color: #e53935; font-size: 1.01rem;}
+    .testimonial-stars { color: #ffc107; margin-left: 5px;}
+    .testimonial-quote { margin: 13px 0 0 0; font-size: 1rem;}
+    .testimonials-btn { margin: 32px auto 0 auto; display: block;}
+    /* FAQ */
+    .faq-list { max-width: 700px; margin: 0 auto;}
+    .faq-item { background: #fff; border-radius: 9px; box-shadow: 0 2px 6px #0001; margin-bottom: 14px;}
+    .faq-q {
+      padding: 18px 24px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q:hover { background: #f8f8f8;}
+    .faq-a { padding: 0 24px 18px 24px; color: #444; display: none;}
+    .faq-item.open .faq-a { display: block;}
+    /* Contact & Application */
+    .contact-row { display: flex; flex-wrap: wrap; gap: 36px; justify-content: center;}
+    .consult-form { background: #fff; border-radius: 13px; box-shadow: 0 2px 7px #0002; padding: 28px 24px 24px 24px; width: 370px;}
+    .consult-form input, .consult-form select, .consult-form textarea {
+      width: 100%; padding: 10px 13px; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 16px; font-size: 1rem;
+    }
+    .consult-form textarea { min-height: 66px; }
+    .consult-form .btn-red { width: 100%; }
+    .whatsapp-box { background: #27ae60; color: #fff; border-radius: 10px; padding: 22px 18px; margin-bottom: 16px; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; width: 340px;}
+    .whatsapp-box a { background: #fff; color: #27ae60; border-radius: 5px; padding: 7px 15px; font-weight: 600; margin-left: 16px; text-decoration: none;}
+    .contact-info { background: #fff; border-radius: 13px; box-shadow: 0 2px 7px #0002; padding: 22px 18px; font-size: 1rem; width: 340px;}
+    .contact-info div { margin-bottom: 11px; display: flex; align-items: center; gap: 10px;}
+    /* News & Guides */
+    .news-row { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;}
+    .news-card {
+      background: #fff; border-radius: 13px; box-shadow: 0 2px 8px #0002; width: 340px; display: flex; flex-direction: column; min-height: 220px;
+    }
+    .news-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 13px 13px 0 0;}
+    .news-card-content { padding: 16px 18px 22px 18px; flex: 1;}
+    .news-date { font-size: 0.94rem; color: #888;}
+    .news-title { font-size: 1.1rem; font-weight: 700; margin: 3px 0;}
+    .news-desc { color: #555; font-size: 0.97rem; margin-bottom: 8px;}
+    .news-link { color: #e53935; font-weight: 600; text-decoration: none;}
+    .news-link:hover { text-decoration: underline;}
+    /* Footer */
+    footer {
+      background: #222; color: #eee; text-align: center; padding: 24px 0 8px 0; margin-top: 42px; font-size: 1rem;
+    }
+    .footer-links a { color: #eee; margin: 0 12px; text-decoration: none;}
+    .footer-links a:hover { text-decoration: underline; color: #e53935;}
+    .footer-social a { margin: 0 8px; color: #eee; font-size: 1.3rem;}
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-row, .features-row, .timeline-row, .testimonials-row, .contact-row, .news-row, .jobs-grid { flex-direction: column; align-items: center;}
+      header { flex-direction: column; height: auto; padding: 12px 8px;}
+      .logo { font-size: 1.3rem;}
+      nav a { margin: 0 10px;}
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.7rem;}
+      .section-title { font-size: 1.2rem;}
+      .container { padding: 0 7px;}
+      .job-card, .news-card, .consult-form, .contact-info, .whatsapp-box, .about-img, .about-content { width: 100% !important; min-width: unset;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="#" class="logo">WorkBridge</a>
+  <nav>
+    <a href="#jobs">Jobs</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="phone"><i class="fas fa-phone-alt"></i> +92 310 5089156</div>
+</header>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Work in <span class="red">Canada</span><br>Start Your Future Today!</h1>
+    <p>Professional visa services for Pakistani citizens. High-paying jobs waiting for you in Canada.</p>
+    <div class="hero-btns">
+      <a href="#jobs" class="btn-red"><i class="fas fa-briefcase"></i> View Jobs & Apply Now</a>
+      <a href="https://wa.me/923105089156" class="btn-green"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+    </div>
+    <div class="badges">
+      <span class="badge"><i class="fas fa-id-badge"></i> Licensed Visa Agent</span>
+      <span class="badge"><i class="fas fa-check-circle"></i> 100% Verified Jobs</span>
+      <span class="badge"><i class="fas fa-certificate"></i> ICCRC Compliant</span>
+      <span class="badge"><i class="fas fa-users"></i> 10,000+ Happy Clients</span>
+    </div>
+  </div>
+</section>
+<section id="jobs">
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Available Job Opportunities</div>
+    <div class="section-subtitle">
+      High-paying jobs in Canada with full visa sponsorship. Start your Canadian dream today.
+    </div>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=500&q=80" alt="Driver">
+        <div class="job-card-content">
+          <div class="job-title">Driver <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$3,600/month</div>
+          <div class="job-desc">Professional driving positions across Canada with competitive salary and benefits.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=500&q=80" alt="Plumber">
+        <div class="job-card-content">
+          <div class="job-title">Plumber <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$3,200/month</div>
+          <div class="job-desc">Skilled plumbing positions in residential and commercial projects.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1515168833906-d2a3b82b201c?auto=format&fit=crop&w=500&q=80" alt="Factory Worker">
+        <div class="job-card-content">
+          <div class="job-title">Factory Worker <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$2,200/month</div>
+          <div class="job-desc">Manufacturing and production roles with overtime opportunities.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="Cook">
+        <div class="job-card-content">
+          <div class="job-title">Cook <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$2,500/month</div>
+          <div class="job-desc">Culinary positions in restaurants and hospitality industry.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1512070679279-c5bfb07b9c07?auto=format&fit=crop&w=500&q=80" alt="Nurse">
+        <div class="job-card-content">
+          <div class="job-title">Nurse <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$3,800/month</div>
+          <div class="job-desc">Healthcare positions in hospitals and medical facilities.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1519121781217-6a9fadcfa9e7?auto=format&fit=crop&w=500&q=80" alt="Security Guard">
+        <div class="job-card-content">
+          <div class="job-title">Security Guard <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg" width="18" alt="Canada"></span></div>
+          <div class="job-salary">$2,100/month</div>
+          <div class="job-desc">Security positions in commercial and residential properties.</div>
+          <button class="apply-btn"><i class="fas fa-paper-plane"></i> Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="about-row">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Analytics">
+      </div>
+      <div class="about-content">
+        <div class="section-title"><span class="icon">🍁</span>About WorkBridge</div>
+        <div>
+          With over <span style="color:#e53935; font-weight:700;">15 years</span> of experience in Canadian immigration services, we are your trusted partner for work visa applications from Pakistan to Canada.
+        </div>
+        <ul>
+          <li><i class="fas fa-user-shield"></i> Licensed & Registered: Fully licensed immigration consultancy with ICCRC compliance</li>
+          <li><i class="fas fa-users"></i> Proven Track Record: Successfully placed 10,000+ Pakistani professionals in Canada</li>
+          <li><i class="fas fa-hands-helping"></i> End-to-End Support: From application to landing in Canada, we guide you every step</li>
+        </ul>
+        <a href="https://wa.me/923105089156" class="btn-green"><i class="fab fa-whatsapp"></i> Get Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Why Choose Us</div>
+    <div class="section-subtitle">We make your Canadian dream a reality with our proven process and dedicated support.</div>
+    <div class="features-row">
+      <div class="feature-card">
+        <div class="feature-icon red"><i class="fas fa-gavel"></i></div>
+        <div class="feature-title">Legal & Transparent</div>
+        <div class="feature-desc">100% legal process with complete transparency in all dealings and documentation.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="feature-title">Affordable Packages</div>
+        <div class="feature-desc">Competitive pricing with flexible payment plans to make your dream achievable.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon red"><i class="fas fa-bolt"></i></div>
+        <div class="feature-title">Fast Processing</div>
+        <div class="feature-desc">Streamlined process to get your application processed quickly and efficiently.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green"><i class="fas fa-file-alt"></i></div>
+        <div class="feature-title">Documentation Guide</div>
+        <div class="feature-desc">Step-by-step guidance for all required documents and application procedures.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="process">
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Visa Process Timeline</div>
+    <div class="section-subtitle">Our simple 5-step process to get you working in Canada. We handle everything for you.</div>
+    <div class="timeline-row">
+      <div class="timeline-step">
+        <div class="timeline-num red">1</div>
+        <div class="timeline-title">Submit Application</div>
+        <div class="timeline-desc">Fill out our simple online form and submit your application with basic details.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num red">2</div>
+        <div class="timeline-title">Document Collection</div>
+        <div class="timeline-desc">We guide you through collecting and preparing all required documents.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num red">3</div>
+        <div class="timeline-title">Interview & Screening</div>
+        <div class="timeline-desc">Complete background verification and interview preparation assistance.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num red">4</div>
+        <div class="timeline-title">Visa Filing</div>
+        <div class="timeline-desc">Submit your complete application to Canadian immigration authorities.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-num green">5</div>
+        <div class="timeline-title">Fly to Canada</div>
+        <div class="timeline-desc">Get your visa approved and start your new life and career in Canada!</div>
+      </div>
+    </div>
+    <a href="#contact" class="btn-red timeline-btn">Start Your Application Now</a>
+  </div>
+</section>
+<section id="reviews">
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Success Stories</div>
+    <div class="section-subtitle">Real stories from Pakistani professionals who are now working and living in Canada.</div>
+    <div class="testimonials-row">
+      <div class="testimonial-card">
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Ahmed Khan">
+          <div>
+            <div class="testimonial-name">Ahmed Khan</div>
+            <div class="testimonial-job">Truck Driver, Toronto</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">
+          "WorkBridge made my dream come true! Within 8 months, I was working as a truck driver in Toronto earning $3,600 monthly. The process was smooth and transparent."
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Fatima Ali">
+          <div>
+            <div class="testimonial-name">Fatima Ali</div>
+            <div class="testimonial-job">Nurse, Vancouver</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">
+          "As a nurse, I was worried about credential recognition. The team helped me with everything and now I'm earning $3,800 monthly in Vancouver. Highly recommended!"
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Muhammad Hassan">
+          <div>
+            <div class="testimonial-name">Muhammad Hassan</div>
+            <div class="testimonial-job">Chef, Calgary</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">
+          "Professional service from start to finish. I'm now working as a chef in Calgary and my whole family has joined me. Thank you WorkBridge!"
+        </div>
+      </div>
+    </div>
+    <a href="#" class="btn-green testimonials-btn">Read More Success Stories</a>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Frequently Asked Questions</div>
+    <div class="section-subtitle">Get answers to the most common questions about Canadian work visas.</div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-q">What documents are required for a Canadian work visa? <i class="fas fa-angle-down"></i></div>
+        <div class="faq-a">Passport, job offer letter, educational documents, experience certificates, police clearance, medical exam, and application forms.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does the visa process take? <i class="fas fa-angle-down"></i></div>
+        <div class="faq-a">Typically 4–8 months, depending on the job, documentation, and embassy workload.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you guarantee a job in Canada? <i class="fas fa-angle-down"></i></div>
+        <div class="faq-a">We offer only 100% verified jobs with visa sponsorship. Final selection depends on your interview and employer requirements.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can families apply together? <i class="fas fa-angle-down"></i></div>
+        <div class="faq-a">Yes, family sponsorship is available. Spouse and children can accompany you on a dependent visa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What are the service charges? <i class="fas fa-angle-down"></i></div>
+        <div class="faq-a">Service charges depend on your profile, job category, and required documentation. Contact us for a personalized quote.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Start Your Journey Today</div>
+    <div class="section-subtitle">Ready to work in Canada? Get in touch with our immigration experts for a free consultation.</div>
+    <div class="contact-row">
+      <form class="consult-form">
+        <h3>Get Free Consultation</h3>
+        <input type="text" placeholder="Your Name *" required>
+        <input type="tel" placeholder="Phone Number *" required>
+        <input type="email" placeholder="Email Address *" required>
+        <select required>
+          <option value="">Select Job Category *</option>
+          <option>Driver</option>
+          <option>Plumber</option>
+          <option>Factory Worker</option>
+          <option>Cook</option>
+          <option>Nurse</option>
+          <option>Security Guard</option>
+        </select>
+        <textarea placeholder="Tell us about your experience and goals"></textarea>
+        <button type="submit" class="btn-red">Send Application</button>
+      </form>
+      <div>
+        <div class="whatsapp-box">
+          <i class="fab fa-whatsapp fa-lg"></i>
+          Quick WhatsApp Consultation
+          <a href="https://wa.me/923105089156" target="_blank">Chat on WhatsApp</a>
+        </div>
+        <div class="contact-info">
+          <div><i class="fas fa-map-marker-alt"></i> <b>Office Address</b>: 123 Immigration Plaza, Lahore, Pakistan</div>
+          <div><i class="fas fa-phone-alt"></i> <b>Phone</b>: +92 310 5089156</div>
+          <div><i class="fas fa-envelope"></i> <b>Email</b>: info@workbridge.com</div>
+          <div><i class="fas fa-clock"></i> <b>Office Hours</b>: Mon-Fri: 9AM–6PM, Sat: 10AM–4PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-title"><span class="icon">🍁</span>Immigration Guides & News</div>
+    <div class="section-subtitle">Stay updated with the latest immigration news and helpful guides for Pakistani professionals.</div>
+    <div class="news-row">
+      <div class="news-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="News">
+        <div class="news-card-content">
+          <div class="news-date">January 15, 2025</div>
+          <div class="news-title">Top 5 In-Demand Jobs in Canada for Pakistanis in 2025</div>
+          <div class="news-desc">Discover the most sought-after job categories in Canada and their salary ranges for Pakistani professionals…</div>
+          <a href="#" class="news-link">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="News">
+        <div class="news-card-content">
+          <div class="news-date">January 10, 2025</div>
+          <div class="news-title">Step-by-Step Guide to Canadian Work Visa Application</div>
+          <div class="news-desc">Complete walkthrough of the Canadian work visa application process with timeline and requirements…</div>
+          <a href="#" class="news-link">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="News">
+        <div class="news-card-content">
+          <div class="news-date">January 5, 2025</div>
+          <div class="news-title">How Much Can You Earn in Canada as a Factory Worker?</div>
+          <div class="news-desc">Detailed breakdown of factory worker salaries, benefits, and career growth opportunities in different Canadian provinces…</div>
+          <a href="#" class="news-link">Read More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="btn-red timeline-btn" style="margin-top:32px;">View All Articles</a>
+  </div>
+</section>
+<footer>
+  <div class="footer-links">
+    <a href="#jobs">Jobs</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-social" style="margin: 14px 0;">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+  &copy; 2025 WorkBridge – All Rights Reserved
+</footer>
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.onclick = function() {
+      var parent = q.parentElement;
+      parent.classList.toggle('open');
+    }
+  });
+  // Demo: prevent form submit reload
+  document.querySelector('.consult-form').onsubmit = function(e){
+    e.preventDefault();
+    alert('Thank you! Your application has been received.');
+    this.reset();
+  }
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav a').forEach(link => {
+    link.onclick = function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:"smooth"});
+    }
+  });
+</script>
+</body>
+</html>
